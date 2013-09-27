@@ -2,35 +2,47 @@
 title CardSort-Test
 meta(charset="utf-8")
 link(href="CardSort.css", rel="stylesheet", type="text/css")
-.zone.zone1
+.zone.startzone
   .droparea
     .card.card1 Card A
     .card.card2 Card B
-  .zonelabel
-    |Start Zone
-
-//-div(style="clear: both") //-remove comment if following zones should be in next line
-
-.zone.zone2
-  .droparea
     .card.card3 Card C
     .card.card4 Card D
-  .zonelabel
-    |Drop Zone 1
-
-.zone.zone3
-  .droparea
     .card.card5 Card E
     .card.card6 Card F
-  .zonelabel
-    |Drop Zone 2
-
-.zone.zone4
-  .droparea
     .card.card7 Card G
     .card.card8 Card H
   .zonelabel
-    |Drop Zone 3
+    |Start Zone
+
+div(style="clear: both") //-remove comment if following zones should be in next line
+
+.zone.dropzone1
+  .droparea
+  .zonelabel
+    |sehr schlecht
+
+.zone.dropzone2
+  .droparea
+  .zonelabel
+    |schlecht
+
+.zone.dropzone3
+  .droparea
+  .zonelabel
+    |geht so
+
+.zone.dropzone4
+  .droparea
+  .zonelabel
+    |gut
+
+.zone.dropzone5
+  .droparea
+  .zonelabel
+    |sehr gut
+
+include fieldset.html
 
 script(src="../bower_components/jquery/jquery.js")
 script(src="../bower_components/jquery-ui/ui/jquery.ui.core.js")

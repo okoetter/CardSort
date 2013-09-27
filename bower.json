@@ -1,0 +1,20 @@
+{
+  "name": "Drag'n'Drop Card Sort",
+  "version": "0.0.1",
+  "authors": [
+    "Oliver Kötter"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~1.10",
+    "jquery-ui": "~1.10"
+  }
+}

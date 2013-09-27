@@ -1,0 +1,75 @@
+@import 'nib/vendor'
+
+//Configuration
+cardWidth = 4rem
+cardHeight = 6rem
+zoneWidth = 8rem
+zoneHeight = 12rem
+zoneColor = darkgray
+labelHeight = 1.5rem
+
+//Global styles
+body
+  font 12px Helvetica, Arial, sans-serif
+
+//Zones
+.zone
+  position relative
+  float left
+  margin 1rem 2rem 1rem 0
+
+  .droparea
+    width zoneWidth
+    height zoneHeight
+    padding 0
+    position relative
+    background-color zoneColor
+    border-radius 0.2rem
+  .zonelabel
+    height labelHeight
+    padding 0.5rem
+    color black
+    font-weight bold
+    text-align center
+
+//left zones with margin
+.zone1
+  margin-left 1rem
+
+//Cards
+.card
+  background-color white
+  color white
+  font-weight bold
+  text-align center
+  //border 1px solid black
+  border-radius 0.2rem
+  box-shadow 0.2rem 0.2rem rgba(0, 0, 0, .50)
+  width cardWidth
+  height cardHeight
+  padding 0.5rem
+  position absolute
+  cursor pointer
+
+.card:first-child //first card in dropzone smaller shadow
+  box-shadow 0.1rem 0.1rem rgba(0, 0, 0, .50)
+
+.card.ui-draggable-dragging
+  box-shadow 0.4rem 0.4rem rgba(0, 0, 0, .50)
+
+.card1
+  background-color #7A2289
+.card2
+  background-color #4C1D52
+.card3
+  background-color #F7911E
+.card4
+  background-color #EF5205
+.card5
+  background-color #C50017
+.card6
+  background-color #3EB1CC
+.card7
+  background-color #4655A5
+.card8
+  background-color #131C6B

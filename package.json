@@ -1,0 +1,16 @@
+{
+  "name": "cardsort",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "author": {
+    "name": "Oliver Kötter",
+    "email": "oliver.koetter@tns-infratest.com"
+  },
+  "devDependencies" : {
+    "grunt": "0.4.x",
+    "grunt-contrib": "0.7.x"
+  }
+}

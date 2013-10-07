@@ -10,7 +10,7 @@
   var topOffset     = 6;
   var itemsSelector = "#fieldset_" + gridId + ">table>tbody>tr>th";
 
-  $(function () {
+  jQuery(function ($) {
     createCards();
     $(".droparea").each(function() { //for each zone
       alignCards(this);
@@ -33,45 +33,44 @@
         writeData(ui.draggable[0].classList[1], this.parentElement.classList[1]); //write data of dropped card into form
       }
     });
-  });
 
-  //reads the grid and creates the cards in DOM on start zone
-  function createCards() {
-    var items = $(itemsSelector).get(); //get DOM items from jQuery
+    //reads the grid and creates the cards in DOM on start zone
+    function createCards() {
+      var items = $(itemsSelector).get(); //get DOM items from jQuery
 
-    for (var i = items.length - 1; i >= 0; i--) { //iterate reverse because first item should be top most -> last in DOM
-      var $newCard = $("<div class=\"card card" + (i + 1) +"\">" + $(items[i]).text() + "</div>");
-      $newCard.appendTo(".startzone:first > .droparea:first");
+      for (var i = items.length - 1; i >= 0; i--) { //iterate reverse because first item should be top most -> last in DOM
+        var $newCard = $("<div class=\"card card" + (i + 1) +"\">" + $(items[i]).text() + "</div>");
+        $newCard.appendTo(".startzone:first > .droparea:first");
+      }
     }
-  }
 
-  //aligns the cards on the zones
-  function alignCards(dropzone) {
-    var left = leftStart; //reset offsets to top for new zone
-    var top = topStart;
+    //aligns the cards on the zones
+    function alignCards(dropzone) {
+      var left = leftStart; //reset offsets to top for new zone
+      var top = topStart;
 
-    $(dropzone).find(".card").each(function() { //for each card in this zone
-      $(this).css({
-          "top": top,
-          "left": left
+      $(dropzone).find(".card").each(function() { //for each card in this zone
+        $(this).css({
+            "top": top,
+            "left": left
+        });
+        left += leftOffset; //increase offsets for new card in same zone
+        top += topOffset;
       });
-      left += leftOffset; //increase offsets for new card in same zone
-      top += topOffset;
-    });
-  }
-
-  //writes card sort data back to grid
-  function writeData(card, dropzone) {
-    var re = /(\d+)$/;
-    var cardNo = re.exec(card)[0];
-
-    if(dropzone === "startzone") {
-      $("input[id^='" + gridId + "_" + cardNo + "']").prop("checked", false);
     }
-    else {
-      var dropzoneNo = re.exec(dropzone)[0];
-      $("#" + gridId + "_" + cardNo + "_" + dropzoneNo).prop("checked", true);
-    }
-  }
 
+    //writes card sort data back to grid
+    function writeData(card, dropzone) {
+      var re = /(\d+)$/;
+      var cardNo = re.exec(card)[0];
+
+      if(dropzone === "startzone") {
+        $("input[id^='" + gridId + "_" + cardNo + "']").prop("checked", false);
+      }
+      else {
+        var dropzoneNo = re.exec(dropzone)[0];
+        $("#" + gridId + "_" + cardNo + "_" + dropzoneNo).prop("checked", true);
+      }
+    }
+  });
 }());

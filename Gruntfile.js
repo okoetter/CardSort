@@ -126,7 +126,7 @@ module.exports = function(grunt) {
       }
     },
 
-    clean: ['app/main.min.js']
+    clean: ['app/main.min.js', 'app/fieldset.html']
 
   });
 

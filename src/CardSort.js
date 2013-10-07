@@ -8,7 +8,7 @@
   var topStart      = 10;
   var leftOffset    = 3;
   var topOffset     = 6;
-  var itemsSelector = "#fieldset_" + gridId + ">table>tbody>tr>th";
+  var cardTextFromGridSelector = "#fieldset_" + gridId + ">table>tbody>tr>th";
 
   jQuery(function ($) {
     createCards();
@@ -36,11 +36,21 @@
 
     //reads the grid and creates the cards in DOM on start zone
     function createCards() {
-      var items = $(itemsSelector).get(); //get DOM items from jQuery
+      var items = $(cardTextFromGridSelector).get(); //get DOM items from jQuery
 
       for (var i = items.length - 1; i >= 0; i--) { //iterate reverse because first item should be top most -> last in DOM
-        var $newCard = $("<div class=\"card card" + (i + 1) +"\">" + $(items[i]).text() + "</div>");
+      var item = items[i];
+      var itemId = i + 1;
+      var oldValue = $("input[name='" + gridId + "_" + itemId + "']:checked").val();
+      var $newCard = $("<div class=\"card card" + itemId +"\">" + $(item).text() + "</div>");
+
+      //if nothing checked, put on start zone
+      if(oldValue === undefined) {
         $newCard.appendTo(".startzone:first > .droparea:first");
+      }
+      else { //else put on appropriate drop zone
+        $newCard.appendTo(".dropzone" + oldValue + ":first > .droparea:first");
+      }
       }
     }
 

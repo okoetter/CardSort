@@ -8,7 +8,8 @@
   var topStart      = 10;
   var leftOffset    = 3;
   var topOffset     = 6;
-  var cardTextFromGridSelector = "#fieldset_" + gridId + ">table>tbody>tr>th";
+  var completeGridLineSelector = "#fieldset_" + gridId + ">table>tbody>tr";
+  var relativeCardTextSelector = "th";
 
   jQuery(function ($) {
     createCards();
@@ -36,21 +37,22 @@
 
     //reads the grid and creates the cards in DOM on start zone
     function createCards() {
-      var items = $(cardTextFromGridSelector).get(); //get DOM items from jQuery
+      var items = $(completeGridLineSelector).get(); //get DOM items from jQuery
 
       for (var i = items.length - 1; i >= 0; i--) { //iterate reverse because first item should be top most -> last in DOM
-      var item = items[i];
-      var itemId = i + 1;
-      var oldValue = $("input[name='" + gridId + "_" + itemId + "']:checked").val();
-      var $newCard = $("<div class=\"card card" + itemId +"\">" + $(item).text() + "</div>");
+        var item = items[i];
+        var radioId = $(item).find("input[type='radio']:first").attr("id");
+        var itemId = radioId.split("_")[1];
+        var $newCard = $("<div class=\"card card" + itemId +"\">" + $(item).find(relativeCardTextSelector).text() + "</div>");
+        var oldValue = $("input[name='" + gridId + "_" + itemId + "']:checked").val();
 
-      //if nothing checked, put on start zone
-      if(oldValue === undefined) {
-        $newCard.appendTo(".startzone:first > .droparea:first");
-      }
-      else { //else put on appropriate drop zone
-        $newCard.appendTo(".dropzone" + oldValue + ":first > .droparea:first");
-      }
+        //if nothing checked, put on start zone
+        if(oldValue === undefined) {
+          $newCard.appendTo(".startzone:first > .droparea:first");
+        }
+        else { //else put on appropriate drop zone
+          $newCard.appendTo(".dropzone" + oldValue + ":first > .droparea:first");
+        }
       }
     }
 

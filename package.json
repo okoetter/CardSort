@@ -9,8 +9,9 @@
     "name": "Oliver Kötter",
     "email": "oliver.koetter@tns-infratest.com"
   },
-  "devDependencies" : {
+  "devDependencies": {
     "grunt": "0.4.x",
-    "grunt-contrib": "0.7.x"
+    "grunt-contrib": "0.7.x",
+    "grunt-regex-replace": "~0.2.5"
   }
 }
